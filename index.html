@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Rabattberechner</title>
+	
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+			<body>
+				<h1>Rabattberechner</h1>
+				
+					<script>
+
+					function fRabatt() {
+
+					var vMenge;
+					var vAusgabeHtml=" ";
+					var vRabattA=0.05;
+					var vRabattB=0.12;
+					var vGesamtpreis;
+					var vPreis=12.40;
+
+					vMenge = document.getElementById("idMenge").value;
+
+					if (vMenge<8) {
+					
+
+					vRabatt= "kein Rabatt"
+					vGesamtpreis= vMenge * vPreis;
+					vAusgabeHtml=vAusgabeHtml + "Sie haben: " + vMenge + " Flaschen bestell! </br>";
+					vAusgabeHtml=vAusgabeHtml + "Sie bekommen: " + vRabatt + "</br>";
+					vAusgabeHtml=vAusgabeHtml + "Brutto: " + vGesamtpreis.toFixed(2) + " € ";
+
+					}
+
+					else if (vMenge<16) {
+					
+					vRabatt= "5%"
+					vPreis = vPreis - (vPreis*vRabattA)
+					vGesamtpreis= vMenge * vPreis;
+					vAusgabeHtml=vAusgabeHtml + "Sie haben: " + vMenge + " Flaschen bestellt! </br>";
+					vAusgabeHtml=vAusgabeHtml + "Sie bekommen: " + vRabatt + "</br>";
+					vAusgabeHtml=vAusgabeHtml + "Brutto: " + vGesamtpreis.toFixed(2) + " € </br>";
+					vAusgabeHtml=vAusgabeHtml + "Rabatt: " + vPreis.toFixed(2) + " € ";
+
+					}
+	
+					else {
+					
+					vRabatt= "12%"
+					vPreis = vPreis - (vPreis*vRabattB)
+					vGesamtpreis= vMenge * vPreis;
+					vAusgabeHtml=vAusgabeHtml + "Sie haben: " + vMenge + " Flaschen bestell! </br>";
+					vAusgabeHtml=vAusgabeHtml + "Sie bekommen: " + vRabatt + "</br>";
+					vAusgabeHtml=vAusgabeHtml + "Brutto: " + vGesamtpreis.toFixed(2) + " € </br>";
+					vAusgabeHtml=vAusgabeHtml + "Rabatt: " + vPreis.toFixed(2) + " € ";
+
+						
+					}
+	
+					document.getElementById("idAusgabeHtml").innerHTML=vAusgabeHtml;
+
+					}
+
+					</script>
+			Anzahl Flaschen: <input id="idMenge" type="text" size="5" value="3">
+			
+			<button onClick="fRabatt()">Berechne!</button>
+		</br></br>
+			<div id="idAusgabeHtml">
+
+			</div>
+			<br>
+
+</html>
